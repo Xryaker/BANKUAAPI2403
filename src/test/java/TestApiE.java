@@ -22,6 +22,7 @@ public class TestApiE {
     public void test2(){
         for (Exchange l : exchanges) {
             System.out.println(l.cc + " " + l.rate);
+            System.out.println(l.property);
         }
     }
 }
