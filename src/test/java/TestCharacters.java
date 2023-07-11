@@ -13,16 +13,20 @@ public class TestCharacters {
     public void printAllAliveCharacters() throws JsonProcessingException {
         ObjectMapper om = new ObjectMapper();
         Characters character = om.readValue(Rest.getRest("https://rickandmortyapi.com/api/character"), Characters.class);
+        int i=1;
         do {
+            System.out.println(character.info.next);
             for (Result l : character.results) {
-                if (l.status.equals("Alive")) {
-                    System.out.println(l.name);
-                }
+                System.out.println(l.id);
             }
             if (character.info.next != null) {
                 character = om.readValue(Rest.getRest(character.info.next), Characters.class);
+                i++;
+            }else{
+                break;
             }
-        } while (character.info.next != null);
+        } while (true);
+        System.out.println("======="+i);
     }
 
     @Test
